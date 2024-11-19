@@ -387,8 +387,8 @@ export default function Test() {
             </button>
           </div>
         </div>
-        <div ref={scrollRef}></div>
       </div>
+      <div ref={scrollRef}></div>
     </>
   );
 }
