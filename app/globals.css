@@ -2,9 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+}
+
+*:focus {
+  outline: 0;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,5 +26,94 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', system-ui, 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-style: normal;
+}
+
+p {
+  width: fit-content;
+}
+
+.Toastify__toast-body {
+  font-family: 'Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', system-ui, 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR',
+    'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+.screen-size {
+  min-width: 320px;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.x-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.y-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loading {
+  width: 30px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background-color: gray;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+    background-color: black;
+    &:first-child {
+      animation-delay: 0s;
+    }
+    &:nth-child(2) {
+      animation-delay: 0.3s;
+      margin: 0 6px;
+    }
+    &:last-child {
+      animation-delay: 0.6s;
+    }
+  }
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.upload-image {
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  height: fit-content;
+}
+
+.chatting-box {
+  max-width: 80%;
+}
+
+.hide {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.img-thumb {
+  max-height: 40vh;
 }
