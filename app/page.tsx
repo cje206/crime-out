@@ -251,6 +251,9 @@ export default function Test() {
     checkLoading();
     scrollBottom();
   }, [chatMsg]);
+  useEffect(() => {
+    scrollBottom();
+  }, [isLoading]);
 
   return (
     <>
@@ -296,7 +299,6 @@ export default function Test() {
             )}
           </div>
         </div>
-        <div ref={scrollRef}></div>
         <div className="screen-size sticky bottom-0 w-full min-h-12 bg-white">
           {plusActive && image && (
             <div className="relative w-full border-t border-t-slate-200 bg-white">
@@ -385,6 +387,7 @@ export default function Test() {
             </button>
           </div>
         </div>
+        <div ref={scrollRef}></div>
       </div>
     </>
   );
