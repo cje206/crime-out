@@ -7,7 +7,7 @@ function ConvertTo2Digits(num: number): string {
 export function GetTimeToText(timestamp: Date): string {
   let isAm = true;
   let hh = ConvertTo2Digits(timestamp.getHours());
-  let mm = ConvertTo2Digits(timestamp.getMinutes());
+  const mm = ConvertTo2Digits(timestamp.getMinutes());
   if (timestamp.getHours() > 12) {
     hh = `${ConvertTo2Digits(timestamp.getHours() - 12)}`;
   }
@@ -77,7 +77,7 @@ export function AddNewMsg(chatMsg: MsgType[], newMsg: MsgType): MsgType[] {
   // 가장 최근 버튼을 제외하고 버튼 제거
   const result: MsgType[] = [];
   msgList.forEach((el) => {
-    let msgbox: MsgDetail[] = [];
+    const msgbox: MsgDetail[] = [];
     el.msg.forEach((msg) => {
       if (msg.msgType !== 'button') {
         msgbox.push(msg);

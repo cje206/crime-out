@@ -33,7 +33,7 @@ export async function getExample() {
   }
 }
 
-export async function useGemini(msg: string) {
+export async function getGemini(msg: string) {
   try {
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 

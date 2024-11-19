@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactElement, useEffect, useRef, useState } from 'react';
-import { getExample, isCrime, useGemini } from './api/gemini';
+import { getExample, isCrime, getGemini } from './api/gemini';
 import { handleImageUpload, uploadImage } from './api/uploadImage';
 import ReactMarkdown from 'react-markdown';
 import { AddNewMsg, clickBtn, CreateBotBtn, CreateBotMd, CreateImg, CreateUserMsg, GetTimeToText } from './functions';
@@ -90,7 +90,7 @@ export default function Test() {
   // CASE 4. 크아에게 질문하기
   const geminiFunc4 = async (text: string) => {
     // isCrime(피싱 메세지 내용) : return값으로 피싱 확률 전달
-    setChatMsg(AddNewMsg(AddNewMsg([...chatMsg], CreateUserMsg([text])), CreateBotMd(await useGemini(text), initialList)));
+    setChatMsg(AddNewMsg(AddNewMsg([...chatMsg], CreateUserMsg([text])), CreateBotMd(await getGemini(text), initialList)));
     setInputMsg('');
     setIsActive(false);
     setTextRow(1);
@@ -108,7 +108,7 @@ export default function Test() {
         }
         setTextRow(1);
         setLineBreak([]);
-        let text1 = inputMsg;
+        const text1 = inputMsg;
         setChatMsg(AddNewMsg([...chatMsg], CreateUserMsg([text1])));
         setInputMsg('');
         geminiFunc1(text1);
@@ -132,7 +132,7 @@ export default function Test() {
         }
         setTextRow(1);
         setLineBreak([]);
-        let text2 = inputMsg;
+        const text2 = inputMsg;
         setChatMsg(AddNewMsg([...chatMsg], CreateUserMsg([text2])));
         setInputMsg('');
         geminiFunc4(text2);
@@ -218,7 +218,9 @@ export default function Test() {
       return (
         <div key={keyName}>
           {msg.map((chatting, index) => (
-            <ReactMarkdown key={`${keyName} detail${index}`} children={chatting} className="p-2 bg-slate-200 rounded-md mb-2" />
+            <ReactMarkdown key={`${keyName} detail${index}`} className="p-2 bg-slate-200 rounded-md mb-2">
+              {chatting}
+            </ReactMarkdown>
           ))}
         </div>
       );
